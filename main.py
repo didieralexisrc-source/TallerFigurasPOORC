@@ -1,97 +1,112 @@
-from cuadrado import Cuadrado
-from rectangulo import Rectangulo
+class Cliente:
+    '''
+    Clase que crea objetos de tipo cliente
+    '''
+
+    def __init__(self, nombre: str, apellido: str, cedula: str, email: str,
+                 vip: bool = False, direccion: str = None,
+                 telefono: str = None, celular: str = None, edad: int = None):
+        self._nombre = nombre
+        self._apellido = apellido
+        self._cedula = cedula
+        self._email = email
+        self._vip = vip
+        self._direccion = direccion
+        self._telefono = telefono
+        self._celular = celular
+        self._edad = edad
+
+    def __str__(self):
+        return f'Cliente [{self.__dict__.__str__()}]'
+
+    # nombre
+    # método que permite conocer o ver el atributo nombre
+    @property
+    def nombre(self):
+        return self._nombre
+
+    # método que permite modificar el valor de nombre
+    @nombre.setter
+    def nombre(self, nuevo_nombre):
+        self._nombre = nuevo_nombre
+
+    #  apellido
+    @property
+    def apellido(self):
+        return self._apellido
+
+    @apellido.setter
+    def apellido(self, nuevo_apellido):
+        self._apellido = nuevo_apellido
+
+    #  cedula
+    @property
+    def cedula(self):
+        return self._cedula
+
+    @cedula.setter
+    def cedula(self, nueva_cedula):
+        self._cedula = nueva_cedula
+
+    #  email
+    @property
+    def email(self):
+        return self._email
+
+    @email.setter
+    def email(self, nuevo_email):
+        self._email = nuevo_email
+
+    #  vip
+    @property
+    def vip(self):
+        return self._vip
+
+    @vip.setter
+    def vip(self, nuevo_vip):
+        self._vip = nuevo_vip
+
+    #  direccion
+    @property
+    def direccion(self):
+        return self._direccion
+
+    @direccion.setter
+    def direccion(self, nueva_direccion):
+        self._direccion = nueva_direccion
+
+    #  telefono
+    @property
+    def telefono(self):
+        return self._telefono
+
+    @telefono.setter
+    def telefono(self, nuevo_telefono):
+        self._telefono = nuevo_telefono
+
+    #  celular
+    @property
+    def celular(self):
+        return self._celular
+
+    @celular.setter
+    def celular(self, nuevo_celular):
+        self._celular = nuevo_celular
+
+    #  edad
+    @property
+    def edad(self):
+        return self._edad
+
+    @edad.setter
+    def edad(self, nueva_edad):
+        self._edad = nueva_edad
 
 
-def sumar_areas(figuras: list) -> float:
-    """Suma el área de todas las figuras en la lista."""
-    total = 0
-    for figura in figuras:
-        total += figura.area()
-    return total
-
-
-def sumar_perimetros(figuras: list) -> float:
-    """Suma el perímetro de todas las figuras en la lista."""
-    total = 0
-    for figura in figuras:
-        total += figura.perimetro()
-    return total
-
-
-def main():
-    print("=" * 55)
-    print("   TALLER POO - FIGURAS GEOMÉTRICAS")
-    print("=" * 55)
-
-    # --- Cuadrados ---
-    print("\n--- Creación de Cuadrados ---")
-    c1 = Cuadrado(5)
-    c2 = Cuadrado(3)
-    print(c1)
-    print(c2)
-
-    print("\n--- Área y Perímetro ---")
-    print(f"Cuadrado 1 -> Área: {c1.area()} | Perímetro: {c1.perimetro()}")
-    print(f"Cuadrado 2 -> Área: {c2.area()} | Perímetro: {c2.perimetro()}")
-
-    print("\n--- Modificación de valores (setter) ---")
-    c1.ancho = 10
-    print(f"Cuadrado 1 tras cambiar lado a 10: {c1}")
-
-    # --- Rectángulos ---
-    print("\n--- Creación de Rectángulos ---")
-    r1 = Rectangulo(4, 7)
-    r2 = Rectangulo(6, 2)
-    print(r1)
-    print(r2)
-
-    print("\n--- Área y Perímetro ---")
-    print(f"Rectángulo 1 -> Área: {r1.area()} | Perímetro: {r1.perimetro()}")
-    print(f"Rectángulo 2 -> Área: {r2.area()} | Perímetro: {r2.perimetro()}")
-
-    print("\n--- Modificación de valores (setter) ---")
-    r1.alto = 12
-    print(f"Rectángulo 1 tras cambiar alto a 12: {r1}")
-
-    # --- Polimorfismo con funciones ---
-    figuras = [c1, c2, r1, r2]
-    print("\n--- Suma de Áreas (polimorfismo) ---")
-    print(f"Suma total de áreas: {sumar_areas(figuras)}")
-
-    print("\n--- Suma de Perímetros (polimorfismo) ---")
-    print(f"Suma total de perímetros: {sumar_perimetros(figuras)}")
-
-    # --- Demostración de validaciones (ValueError) ---
-    print("\n--- Validación de errores ---")
-
-    print("Intentando crear Cuadrado con lado = 0 ...")
-    try:
-        c_invalido = Cuadrado(0)
-    except ValueError as e:
-        print(f"  ValueError capturado: {e}")
-
-    print("Intentando crear Cuadrado con lado = -5 ...")
-    try:
-        c_invalido = Cuadrado(-5)
-    except ValueError as e:
-        print(f"  ValueError capturado: {e}")
-
-    print("Intentando crear Rectángulo con ancho válido y alto = -1 ...")
-    try:
-        r_invalido = Rectangulo(4, -1)
-    except ValueError as e:
-        print(f"  ValueError capturado: {e}")
-
-    print("Intentando asignar ancho = -3 a un rectángulo existente ...")
-    try:
-        r2.ancho = -3
-    except ValueError as e:
-        print(f"  ValueError capturado: {e}")
-
-    print("\n" + "=" * 55)
-    print("   FIN DEL PROGRAMA")
-    print("=" * 55)
-
-
-if __name__ == "__main__":
-    main()
+#  Resultado
+if __name__ == '__main__':
+    cliente1 = Cliente(nombre="Maria", apellido="Paz", cedula="0987654321",
+                       email='maria@mail.com',
+                       vip=True, direccion='Centro', telefono='0425566778899',
+                       celular='0993344556677')
+    print(cliente1)
